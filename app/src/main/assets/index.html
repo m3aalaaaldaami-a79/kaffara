@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>خفارة الحيدري للزائرين</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['Amiri', 'Georgia', 'serif'],
+          },
+          colors: {
+            emeraldHaidari: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22',
+            },
+            goldHaidari: {
+              100: '#fef3c7',
+              400: '#fbbf24',
+              500: '#d4a017',
+              600: '#b4830e',
+              700: '#92670a',
+            },
+            ivory: {
+              50: '#fcfaf5',
+              100: '#f6f1e7',
+              200: '#ebe2d0',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --bg-pattern: rgba(180, 131, 14, 0.06);
+    }
+    html.dark {
+      --bg-pattern: rgba(251, 191, 36, 0.04);
+    }
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      background-image: radial-gradient(var(--bg-pattern) 1px, transparent 1px);
+      background-size: 22px 22px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .islamic-geo-bg {
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4a017' stroke-opacity='0.14' stroke-width='1'%3E%3Cpath d='M40 0L49.5 30.5L80 40L49.5 49.5L40 80L30.5 49.5L0 40L30.5 30.5Z'/%3E%3Ccircle cx='40' cy='40' r='16'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .calendar-cell {
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .calendar-cell:hover {
+      transform: translateY(-2px);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(180, 131, 14, 0.35);
+      border-radius: 9999px;
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeSlideUp 0.25s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-ivory-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Top Civilized Header -->
+  <header class="relative overflow-hidden bg-gradient-to-l from-emeraldHaidari-950 via-emeraldHaidari-900 to-teal-900 text-white shadow-lg border-b-4 border-goldHaidari-500">
+    <div class="islamic-geo-bg absolute inset-0 pointer-events-none"></div>
+    <div class="relative max-w-6xl mx-auto px-4 py-4 sm:py-5 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <!-- Emblem SVG -->
+        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-goldHaidari-400 to-goldHaidari-600 p-0.5 shadow-lg shrink-0">
+          <div class="w-full h-full bg-emeraldHaidari-950 rounded-[14px] flex items-center justify-center">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-goldHaidari-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M12 2L14.8 7.6L21 8.5L16.5 12.9L17.6 19.1L12 16.2L6.4 19.1L7.5 12.9L3 8.5L9.2 7.6L12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h1 class="font-serif text-2xl sm:text-3xl font-bold tracking-wide text-goldHaidari-100 drop-shadow">
+            خفارة الحيدري للزائرين
+          </h1>
+          <p class="text-xs sm:text-sm text-emerald-100/90 mt-0.5">
+            نظام تنظيم وجدولة الخفارات الرباعية • بالتاريخين الميلادي والهجري
+          </p>
+        </div>
+      </div>
+
+      <!-- Header Action Buttons -->
+      <div class="flex items-center gap-2">
+        <button id="btnShareWhatsapp" type="button" title="مشاركة الجدول عبر واتساب"
+          class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white text-xs sm:text-sm font-semibold shadow transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+          </svg>
+          <span class="hidden sm:inline">مشاركة</span>
+        </button>
+
+        <button id="btnThemeToggle" type="button" title="تبديل المظهر الليلي / النهاري"
+          class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-goldHaidari-100 transition">
+          <svg id="iconSun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+          <svg id="iconMoon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+          </svg>
+        </button>
+
+        <button id="btnOpenSettings" type="button" title="الإعدادات والتصدير"
+          class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <span class="hidden sm:inline">الإعدادات</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-6 space-y-6">
+
+    <!-- Today & Tomorrow Spotlight Cards -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Today Card -->
+      <div id="cardToday" class="rounded-2xl bg-white dark:bg-slate-900 border border-ivory-200 dark:border-slate-800 shadow-sm p-5 flex flex-col justify-between relative overflow-hidden">
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            خفارة اليوم
+          </span>
+          <span id="todayWeekday" class="text-xs font-semibold text-slate-500 dark:text-slate-400"></span>
+        </div>
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <div id="todayPersonName" class="text-2xl font-extrabold text-slate-900 dark:text-white"></div>
+            <div id="todayDates" class="text-xs text-slate-500 dark:text-slate-400 mt-1 space-y-0.5"></div>
+          </div>
+          <div id="todayBadge" class="w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-md"></div>
+        </div>
+      </div>
+
+      <!-- Tomorrow Card (Highlighted) -->
+      <div id="cardTomorrow" class="rounded-2xl bg-gradient-to-br from-emeraldHaidari-900 to-teal-900 text-white border border-goldHaidari-500/40 shadow-md p-5 flex flex-col justify-between relative overflow-hidden">
+        <div class="islamic-geo-bg absolute inset-0 opacity-40 pointer-events-none"></div>
+        <div class="relative flex items-center justify-between gap-2 mb-3">
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full bg-goldHaidari-500/20 text-goldHaidari-100 border border-goldHaidari-400/30">
+            خفارة الغد
+          </span>
+          <span id="tomorrowWeekday" class="text-xs font-semibold text-emerald-100/80"></span>
+        </div>
+        <div class="relative flex items-center justify-between gap-3">
+          <div>
+            <div id="tomorrowPersonName" class="text-2xl font-extrabold text-white"></div>
+            <div id="tomorrowDates" class="text-xs text-emerald-100/85 mt-1 space-y-0.5"></div>
+          </div>
+          <div id="tomorrowBadge" class="w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/20"></div>
+        </div>
+      </div>
+
+      <!-- Rotation Cycle & Next User Shift Card -->
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-ivory-200 dark:border-slate-800 shadow-sm p-5 flex flex-col justify-between">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="text-xs font-bold text-goldHaidari-700 dark:text-goldHaidari-400">تسلسل الدورة الرباعية</span>
+          <span id="myNextShiftLabel" class="text-xs font-semibold px-2 py-0.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300"></span>
+        </div>
+        <div id="cycleSequenceBar" class="flex items-center justify-between gap-1.5 my-2"></div>
+        <div class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between pt-2 border-t border-ivory-100 dark:border-slate-800">
+          <span>نظام: يوم خفارة + ٣ أيام راحة</span>
+          <span id="anchorInfoText"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- View Tabs -->
+    <div class="flex items-center gap-2 bg-white dark:bg-slate-900 p-1.5 rounded-2xl border border-ivory-200 dark:border-slate-800 shadow-sm w-full sm:w-fit">
+      <button id="tabBtnCalendar" type="button"
+        class="flex-1 sm:flex-none px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-emeraldHaidari-800 text-white shadow-sm">
+        التقويم الشهري
+      </button>
+      <button id="tabBtnSearch" type="button"
+        class="flex-1 sm:flex-none px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition text-slate-600 dark:text-slate-300 hover:bg-ivory-100 dark:hover:bg-slate-800">
+        خفارة من هذا اليوم
+      </button>
+    </div>
+
+    <!-- Search By Date Tab Panel -->
+    <section id="searchTabPanel" class="hidden space-y-6 animate-in">
+      <div class="rounded-3xl bg-white dark:bg-slate-900 border border-ivory-200 dark:border-slate-800 shadow-sm p-5 sm:p-6">
+        <div class="mb-5">
+          <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">خفارة من هذا اليوم</h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">ابحث بالتاريخ الميلادي أو الهجري لمعرفة الخفير المكلف وتسلسل الخفارات بدءاً من ذلك اليوم.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Gregorian Search Box -->
+          <div class="p-4 rounded-2xl bg-ivory-50 dark:bg-slate-800/60 border border-ivory-200 dark:border-slate-700 space-y-3">
+            <div class="flex items-center gap-2 text-sm font-extrabold text-emeraldHaidari-800 dark:text-emerald-400">
+              <span>البحث بالتاريخ الميلادي</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <input id="searchGregDateInput" type="date"
+                class="flex-1 rounded-xl border border-ivory-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-emeraldHaidari-600" />
+              <button id="btnSearchGreg" type="button"
+                class="px-4 py-2.5 rounded-xl bg-emeraldHaidari-800 hover:bg-emeraldHaidari-700 text-white text-xs sm:text-sm font-bold shadow-sm transition">
+                بحث ميلادي
+              </button>
+            </div>
+          </div>
+
+          <!-- Hijri Search Box -->
+          <div class="p-4 rounded-2xl bg-ivory-50 dark:bg-slate-800/60 border border-ivory-200 dark:border-slate-700 space-y-3">
+            <div class="flex items-center gap-2 text-sm font-extrabold text-goldHaidari-700 dark:text-goldHaidari-400">
+              <span>البحث بالتاريخ الهجري</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+              <select id="searchHijriDay" aria-label="اليوم الهجري"
+                class="rounded-xl border border-ivory-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2.5 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-goldHaidari-500"></select>
+              <select id="searchHijriMonth" aria-label="الشهر الهجري"
+                class="rounded-xl border border-ivory-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-goldHaidari-500"></select>
+              <select id="searchHijriYear" aria-label="السنة الهجرية"
+                class="rounded-xl border border-ivory-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-2.5 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-goldHaidari-500"></select>
+            </div>
+            <button id="btnSearchHijri" type="button"
+              class="w-full py-2.5 rounded-xl bg-goldHaidari-600 hover:bg-goldHaidari-700 text-white text-xs sm:text-sm font-bold shadow-sm transition">
+              بحث هجري
+            </button>
+          </div>
+        </div>
+
+        <!-- Search Result Card -->
+        <div id="searchResultContainer" class="mt-6"></div>
+      </div>
+    </section>
+
+    <!-- Calendar Tab Panel -->
+    <div id="calendarTabPanel" class="space-y-6">
+    <!-- Calendar Section -->
+    <section class="rounded-3xl bg-white dark:bg-slate-900 border border-ivory-200 dark:border-slate-800 shadow-sm overflow-hidden">
+      <!-- Calendar Toolbar -->
+      <div class="p-4 sm:p-5 border-b border-ivory-200 dark:border-slate-800 bg-ivory-100/60 dark:bg-slate-900/80 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div class="flex items-center justify-between sm:justify-start gap-3">
+          <div class="flex items-center gap-1.5">
+            <button id="btnPrevMonth" type="button" title="الشهر السابق"
+              class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-ivory-200 dark:border-slate-700 hover:border-goldHaidari-500 text-slate-700 dark:text-slate-200 shadow-sm transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <button id="btnToday" type="button"
+              class="px-3.5 py-2 rounded-xl bg-emeraldHaidari-800 hover:bg-emeraldHaidari-700 text-white text-xs sm:text-sm font-bold shadow-sm transition">
+              اليوم
+            </button>
+            <button id="btnNextMonth" type="button" title="الشهر التالي"
+              class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-ivory-200 dark:border-slate-700 hover:border-goldHaidari-500 text-slate-700 dark:text-slate-200 shadow-sm transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+          </div>
+          <div>
+            <h2 id="calendarGregorianTitle" class="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white leading-tight"></h2>
+            <div class="flex flex-wrap items-center gap-2 mt-0.5">
+              <p id="calendarHijriTitle" class="text-xs sm:text-sm font-semibold text-goldHaidari-700 dark:text-goldHaidari-400"></p>
+              <div id="hijriQuickOffsetBar" class="inline-flex items-center gap-0.5 bg-white dark:bg-slate-800 border border-ivory-200 dark:border-slate-700 rounded-lg p-0.5 shadow-sm" title="تقديم أو تأخير التاريخ الهجري">
+                <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 px-1.5">الهلال:</span>
+                <button type="button" data-hijri-offset="-2" class="px-1.5 py-0.5 rounded text-[10px] font-bold transition">-٢</button>
+                <button type="button" data-hijri-offset="-1" class="px-1.5 py-0.5 rounded text-[10px] font-bold transition">-١</button>
+                <button type="button" data-hijri-offset="0" class="px-1.5 py-0.5 rounded text-[10px] font-bold transition">٠</button>
+                <button type="button" data-hijri-offset="1" class="px-1.5 py-0.5 rounded text-[10px] font-bold transition">+١</button>
+                <button type="button" data-hijri-offset="2" class="px-1.5 py-0.5 rounded text-[10px] font-bold transition">+٢</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Pills by Colleague -->
+        <div id="filterPills" class="flex flex-wrap items-center gap-1.5"></div>
+      </div>
+
+      <!-- Weekday Headers -->
+      <div class="grid grid-cols-7 bg-ivory-100/90 dark:bg-slate-800/70 border-b border-ivory-200 dark:border-slate-800 text-center text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 py-2.5">
+        <div>السبت</div>
+        <div>الأحد</div>
+        <div>الإثنين</div>
+        <div>الثلاثاء</div>
+        <div>الأربعاء</div>
+        <div>الخميس</div>
+        <div class="text-emeraldHaidari-700 dark:text-emerald-400">الجمعة</div>
+      </div>
+
+      <!-- Calendar Grid -->
+      <div id="calendarGrid" class="grid grid-cols-7 gap-px bg-ivory-200 dark:bg-slate-800"></div>
+    </section>
+
+    <!-- Bottom Grid: Monthly Stats + Upcoming 12 Days -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- Monthly Statistics -->
+      <div class="lg:col-span-5 rounded-2xl bg-white dark:bg-slate-900 border border-ivory-200 dark:border-slate-800 shadow-sm p-5">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-extrabold text-slate-900 dark:text-white">إحصائيات الشهر المعروض</h3>
+          <span id="statsMonthBadge" class="text-xs font-semibold text-slate-500 dark:text-slate-400"></span>
+        </div>
+        <div id="monthlyStatsContainer" class="space-y-3"></div>
+        <div class="mt-5 pt-4 border-t border-ivory-100 dark:border-slate-800 flex flex-wrap gap-2">
+          <button id="btnExportICS" type="button"
+            class="flex-1 min-w-[120px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-ivory-100 hover:bg-ivory-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition">
+            تصدير للتقويم (ICS)
+          </button>
+          <button id="btnExportCSV" type="button"
+            class="flex-1 min-w-[120px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-ivory-100 hover:bg-ivory-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition">
+            تصدير جدول (CSV)
+          </button>
+        </div>
+      </div>
+
+      <!-- Upcoming Schedule List -->
+      <div class="lg:col-span-7 rounded-2xl bg-white dark:bg-slate-900 border border-ivory-200 dark:border-slate-800 shadow-sm p-5">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-base font-extrabold text-slate-900 dark:text-white">الجدول القادم (١٢ يوماً)</h3>
+          <span class="text-xs text-slate-500 dark:text-slate-400">اضغط على أي يوم للتعديل أو إضافة ملاحظة</span>
+        </div>
+        <div id="upcomingList" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[340px] overflow-y-auto custom-scrollbar pr-1"></div>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto py-4 px-4 border-t border-ivory-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 text-center text-xs text-slate-500 dark:text-slate-400">
+    تطبيق <strong class="text-emeraldHaidari-800 dark:text-goldHaidari-400">خفارة الحيدري للزائرين</strong> • يعمل بدون إنترنت ويحفظ التعديلات تلقائياً على جهازك
+  </footer>
+
+  <!-- Day Details & Swap Modal -->
+  <div id="dayModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/60 backdrop-blur-sm p-4">
+    <div class="bg-white dark:bg-slate-900 border border-ivory-200 dark:border-slate-800 rounded-3xl max-w-md w-full shadow-2xl overflow-hidden animate-in">
+      <div class="bg-gradient-to-l from-emeraldHaidari-900 to-teal-900 text-white p-5 flex items-start justify-between gap-3">
+        <div>
+          <span id="modalWeekday" class="text-xs font-bold text-goldHaidari-400"></span>
+          <h3 id="modalGregorianDate" class="text-lg font-extrabold mt-0.5"></h3>
+          <p id="modalHijriDate" class="text-xs text-emerald-100/90 mt-0.5"></p>
+        </div>
+        <button id="btnCloseDayModal" type="button" class="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-5 space-y-4">
+        <div class="flex items-center justify-between p-3 rounded-2xl bg-ivory-50 dark:bg-slate-800/70 border border-ivory-200 dark:border-slate-700">
+          <div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">المكلف بالخفارة:</div>
+            <div id="modalCurrentPerson" class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5"></div>
+          </div>
+          <span id="modalOverrideBadge" class="hidden text-[11px] font-bold px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+            تم التبديل
+          </span>
+        </div>
+
+        <div>
+          <label for="modalAssignSelect" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+            تغيير / تبديل الخفير لهذا اليوم:
+          </label>
+          <select id="modalAssignSelect" class="w-full rounded-xl border border-ivory-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emeraldHaidari-600"></select>
+        </div>
+
+        <div>
+          <label for="modalNoteInput" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+            ملاحظات الخفارة أو شؤون الزائرين:
+          </label>
+          <textarea id="modalNoteInput" rows="3" placeholder="اكتب أي ملاحظة خاصة بهذا اليوم (مثلاً: تبديل مع محمد، تسليم مفاتيح، زيارة خاصة...)"
+            class="w-full rounded-xl border border-ivory-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emeraldHaidari-600"></textarea>
+        </div>
+
+        <div class="flex items-center gap-2 pt-2">
+          <button id="btnSaveDayModal" type="button"
+            class="flex-1 py-2.5 rounded-xl bg-emeraldHaidari-800 hover:bg-emeraldHaidari-700 text-white text-sm font-bold shadow transition">
+            حفظ التغييرات
+          </button>
+          <button id="btnResetDayModal" type="button"
+            class="px-4 py-2.5 rounded-xl bg-ivory-100 hover:bg-ivory-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-bold transition">
+            إرجاع للأصل
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/60 backdrop-blur-sm p-4">
+    <div class="bg-white dark:bg-slate-900 border border-ivory-200 dark:border-slate-800 rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden animate-in max-h-[90vh] flex flex-col">
+      <div class="bg-gradient-to-l from-emeraldHaidari-900 to-teal-900 text-white p-5 flex items-center justify-between">
+        <h3 class="text-lg font-extrabold">إعدادات خفارة الحيدري</h3>
+        <button id="btnCloseSettings" type="button" class="p-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="p-5 space-y-4 overflow-y-auto custom-scrollbar">
+        <div>
+          <h4 class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2">أسماء الخفراء حسب الترتيب الدوري:</h4>
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label class="text-[11px] font-bold text-emerald-700 dark:text-emerald-400">الخفير ١ (أنت)</label>
+              <input id="inputName0" type="text" class="mt-1 w-full rounded-xl border border-ivory-200 dark:border-slate-700 bg-ivory-50 dark:bg-slate-800 px-3 py-2 text-sm font-bold" />
+            </div>
+            <div>
+              <label class="text-[11px] font-bold text-blue-700 dark:text-blue-400">الخفير ٢</label>
+              <input id="inputName1" type="text" class="mt-1 w-full rounded-xl border border-ivory-200 dark:border-slate-700 bg-ivory-50 dark:bg-slate-800 px-3 py-2 text-sm font-bold" />
+            </div>
+            <div>
+              <label class="text-[11px] font-bold text-amber-700 dark:text-amber-400">الخفير ٣</label>
+              <input id="inputName2" type="text" class="mt-1 w-full rounded-xl border border-ivory-200 dark:border-slate-700 bg-ivory-50 dark:bg-slate-800 px-3 py-2 text-sm font-bold" />
+            </div>
+            <div>
+              <label class="text-[11px] font-bold text-purple-700 dark:text-purple-400">الخفير ٤</label>
+              <input id="inputName3" type="text" class="mt-1 w-full rounded-xl border border-ivory-200 dark:border-slate-700 bg-ivory-50 dark:bg-slate-800 px-3 py-2 text-sm font-bold" />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="inputAnchorDate" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+              تاريخ بدء خفارة الخفير ١:
+            </label>
+            <input id="inputAnchorDate" type="date" class="w-full rounded-xl border border-ivory-200 dark:border-slate-700 bg-ivory-50 dark:bg-slate-800 px-3 py-2 text-sm font-semibold" />
+          </div>
+          <div>
+            <label for="inputHijriOffset" class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+              تعديل التاريخ الهجري (رؤية الهلال):
+            </label>
+            <select id="inputHijriOffset" class="w-full rounded-xl border border-ivory-200 dark:border-slate-700 bg-ivory-50 dark:bg-slate-800 px-3 py-2 text-sm font-semibold">
+              <option value="-2">-٢ يوم</option>
+              <option value="-1">-١ يوم</option>
+              <option value="0">٠ (القياسي)</option>
+              <option value="1">+١ يوم</option>
+              <option value="2">+٢ يوم</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-ivory-200 dark:border-slate-800 space-y-2">
+          <div class="text-xs font-bold text-slate-500 dark:text-slate-400">أدوات الحفظ والتنزيل:</div>
+          <div class="grid grid-cols-2 gap-2">
+            <button id="btnDownloadHtml" type="button"
+              class="py-2 px-3 rounded-xl bg-goldHaidari-500/15 hover:bg-goldHaidari-500/25 text-goldHaidari-700 dark:text-goldHaidari-400 text-xs font-bold transition">
+              تنزيل ملف التطبيق (.html)
+            </button>
+            <button id="btnResetAllDefaults" type="button"
+              class="py-2 px-3 rounded-xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/50 text-rose-700 dark:text-rose-300 text-xs font-bold transition">
+              إعادة ضبط المصنع
+            </button>
+          </div>
+        </div>
+
+        <button id="btnSaveSettings" type="button"
+          class="w-full py-2.5 rounded-xl bg-emeraldHaidari-800 hover:bg-emeraldHaidari-700 text-white text-sm font-bold shadow transition">
+          حفظ الإعدادات
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-[60] hidden px-4 py-2.5 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs sm:text-sm font-bold shadow-xl transition-all"></div>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'khafarat_alhaidari_v2';
+
+      const STAFF_COLORS = [
+        { bg: 'bg-emerald-600', soft: 'bg-emerald-50 dark:bg-emerald-950/60', text: 'text-emerald-800 dark:text-emerald-300', border: 'border-emerald-300 dark:border-emerald-700', hex: '#059669' },
+        { bg: 'bg-blue-600', soft: 'bg-blue-50 dark:bg-blue-950/60', text: 'text-blue-800 dark:text-blue-300', border: 'border-blue-300 dark:border-blue-700', hex: '#2563eb' },
+        { bg: 'bg-amber-600', soft: 'bg-amber-50 dark:bg-amber-950/60', text: 'text-amber-800 dark:text-amber-300', border: 'border-amber-300 dark:border-amber-700', hex: '#d97706' },
+        { bg: 'bg-purple-600', soft: 'bg-purple-50 dark:bg-purple-950/60', text: 'text-purple-800 dark:text-purple-300', border: 'border-purple-300 dark:border-purple-700', hex: '#9333ea' }
+      ];
+
+      const DEFAULT_STATE = {
+        names: ['علاء', 'محمد', 'تيسير', 'أكرم'],
+        anchorDate: '2026-11-19', // اليوم الخميس 2026-11-19 هو يوم خفارة علاء
+        hijriOffset: 0,
+        overrides: {}, // { 'YYYY-MM-DD': personIndex }
+        notes: {},     // { 'YYYY-MM-DD': 'text' }
+        theme: 'light'
+      };
+
+      const GREG_MONTHS_AR = [
+        'كانون الثاني / يناير', 'شباط / فبراير', 'آذار / مارس',
+        'نيسان / أبريل', 'أيار / مايو', 'حزيران / يونيو',
+        'تموز / يوليو', 'آب / أغسطس', 'أيلول / سبتمبر',
+        'تشرين الأول / أكتوبر', 'تشرين الثاني / نوفمبر', 'كانون الأول / ديسمبر'
+      ];
+
+      const HIJRI_MONTHS_AR = [
+        'محرم', 'صفر', 'ربيع الأول', 'ربيع الآخر',
+        'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان',
+        'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'
+      ];
+
+      const WEEKDAYS_AR = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+
+      let state = loadState();
+      const now = new Date();
+      let viewYear = now.getFullYear();
+      let viewMonth = now.getMonth();
+      let activeFilter = 'all'; // 'all' or 0..3
+      let selectedDateKey = null;
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return structuredCloneSafe(DEFAULT_STATE);
+          const parsed = JSON.parse(raw);
+          return {
+            names: Array.isArray(parsed.names) && parsed.names.length === 4 ? parsed.names : [...DEFAULT_STATE.names],
+            anchorDate: typeof parsed.anchorDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(parsed.anchorDate) ? parsed.anchorDate : DEFAULT_STATE.anchorDate,
+            hijriOffset: Number.isFinite(Number(parsed.hijriOffset)) ? Number(parsed.hijriOffset) : 0,
+            overrides: parsed.overrides && typeof parsed.overrides === 'object' ? parsed.overrides : {},
+            notes: parsed.notes && typeof parsed.notes === 'object' ? parsed.notes : {},
+            theme: parsed.theme === 'dark' ? 'dark' : 'light'
+          };
+        } catch (e) {
+          return structuredCloneSafe(DEFAULT_STATE);
+        }
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (e) {
+          // Ignore storage quota / sandbox restrictions
+        }
+      }
+
+      function structuredCloneSafe(obj) {
+        return JSON.parse(JSON.stringify(obj));
+      }
+
+      function toDateKey(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, '0');
+        const d = String(date.getDate()).padStart(2, '0');
+        return `${y}-${m}-${d}`;
+      }
+
+      function parseDateKeyUTC(key) {
+        const [y, m, d] = key.split('-').map(Number);
+        return Date.UTC(y, m - 1, d);
+      }
+
+      function addDays(date, days) {
+        const res = new Date(date.getFullYear(), date.getMonth(), date.getDate() + days);
+        return res;
+      }
+
+      // Compute default rotation index (0..3)
+      function getDefaultShiftIndex(dateKey) {
+        const diffDays = Math.round((parseDateKeyUTC(dateKey) - parseDateKeyUTC(state.anchorDate)) / 86400000);
+        return ((diffDays % 4) + 4) % 4;
+      }
+
+      function getShiftIndex(dateKey) {
+        if (Object.prototype.hasOwnProperty.call(state.overrides, dateKey)) {
+          const idx = Number(state.overrides[dateKey]);
+          if (idx >= 0 && idx < 4) return idx;
+        }
+        return getDefaultShiftIndex(dateKey);
+      }
+
+      // Accurate Hijri Conversion using Intl Islamic-Umalqura with Kuwaiti algorithmic fallback
+      function getHijriParts(date) {
+        const adjusted = new Date(date.getFullYear(), date.getMonth(), date.getDate() + (state.hijriOffset || 0));
+        try {
+          const fmt = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn', {
+            day: 'numeric',
+            month: 'numeric',
+            year: 'numeric'
+          });
+          const parts = fmt.formatToParts(adjusted);
+          const day = parseInt(parts.find(p => p.type === 'day')?.value || '0', 10);
+          const month = parseInt(parts.find(p => p.type === 'month')?.value || '0', 10);
+          const year = parseInt(parts.find(p => p.type === 'year')?.value || '0', 10);
+          if (day >= 1 && day <= 30 && month >= 1 && month <= 12 && year > 1300) {
+            return {
+              day,
+              month,
+              year,
+              monthName: HIJRI_MONTHS_AR[month - 1]
+            };
+          }
+        } catch (e) {
+          // Fallback below
+        }
+        return kuwaitiHijri(adjusted);
+      }
+
+      function kuwaitiHijri(date) {
+        let day = date.getDate();
+        let month = date.getMonth();
+        let year = date.getFullYear();
+        let m = month + 1;
+        let y = year;
+        if (m < 3) { y -= 1; m += 12; }
+        let a = Math.floor(y / 100);
+        let b = 2 - a + Math.floor(a / 4);
+        if (y < 1583) b = 0;
+        if (y === 1582) {
+          if (m > 10) b = -10;
+          if (m === 10) { b = 0; if (day > 4) b = -10; }
+        }
+        const jd = Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + day + b - 1524;
+        b = 0;
+        if (jd > 2299160) {
+          a = Math.floor((jd - 1867216.25) / 36524.25);
+          b = 1 + a - Math.floor(a / 4);
+        }
+        const bb = jd + b + 1524;
+        let cc = Math.floor((bb - 122.1) / 365.25);
+        const dd = Math.floor(365.25 * cc);
+        const ee = Math.floor((bb - dd) / 30.6001);
+        day = bb - dd - Math.floor(30.6001 * ee);
+        month = ee - 1;
+        if (ee > 13) { cc += 1; month = ee - 13; }
+        year = cc - 4716;
+        const iyear = 10631 / 30;
+        const epochastro = 1948084;
+        const shift1 = 8.01 / 60;
+        let z = jd - epochastro;
+        const cyc = Math.floor(z / 10631);
+        z = z - 10631 * cyc;
+        const j = Math.floor((z - shift1) / iyear);
+        const iy = 30 * cyc + j;
+        z = z - Math.floor(j * iyear + shift1);
+        let im = Math.floor((z + 28.5001) / 29.5);
+        if (im === 13) im = 12;
+        const id = z - Math.floor(29.5001 * im - 29);
+        return {
+          day: id,
+          month: im,
+          year: iy,
+          monthName: HIJRI_MONTHS_AR[im - 1] || ''
+        };
+      }
+
+      function toArabicDigits(num) {
+        return String(num).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+      }
+
+      function formatGregorianFull(date) {
+        return `${toArabicDigits(date.getDate())} ${GREG_MONTHS_AR[date.getMonth()]} ${toArabicDigits(date.getFullYear())} م`;
+      }
+
+      function formatHijriFull(date) {
+        const h = getHijriParts(date);
+        return `${toArabicDigits(h.day)} ${h.monthName} ${toArabicDigits(h.year)} هـ`;
+      }
+
+      function showToast(msg) {
+        const toast = document.getElementById('toast');
+        toast.textContent = msg;
+        toast.classList.remove('hidden');
+        clearTimeout(showToast._timer);
+        showToast._timer = setTimeout(() => {
+          toast.classList.add('hidden');
+        }, 2800);
+      }
+
+      function applyTheme() {
+        const html = document.documentElement;
+        const sun = document.getElementById('iconSun');
+        const moon = document.getElementById('iconMoon');
+        if (state.theme === 'dark') {
+          html.classList.add('dark');
+          sun.classList.remove('hidden');
+          moon.classList.add('hidden');
+        } else {
+          html.classList.remove('dark');
+          sun.classList.add('hidden');
+          moon.classList.remove('hidden');
+        }
+      }
+
+      function renderSpotlight() {
+        const today = new Date();
+        const tomorrow = addDays(today, 1);
+        const todayKey = toDateKey(today);
+        const tomorrowKey = toDateKey(tomorrow);
+
+        const todayIdx = getShiftIndex(todayKey);
+        const tomorrowIdx = getShiftIndex(tomorrowKey);
+
+        document.getElementById('todayWeekday').textContent = WEEKDAYS_AR[today.getDay()];
+        document.getElementById('todayPersonName').textContent = state.names[todayIdx];
+        document.getElementById('todayDates').innerHTML = `
+          <div>${formatGregorianFull(today)}</div>
+          <div class="text-goldHaidari-700 dark:text-goldHaidari-400 font-semibold">${formatHijriFull(today)}</div>
+        `;
+        const todayBadge = document.getElementById('todayBadge');
+        todayBadge.className = `w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-md ${STAFF_COLORS[todayIdx].bg}`;
+        todayBadge.textContent = state.names[todayIdx].charAt(0);
+
+        document.getElementById('tomorrowWeekday').textContent = WEEKDAYS_AR[tomorrow.getDay()];
+        document.getElementById('tomorrowPersonName').textContent = state.names[tomorrowIdx];
+        document.getElementById('tomorrowDates').innerHTML = `
+          <div>${formatGregorianFull(tomorrow)}</div>
+          <div class="text-goldHaidari-400 font-semibold">${formatHijriFull(tomorrow)}</div>
+        `;
+        const tomorrowBadge = document.getElementById('tomorrowBadge');
+        tomorrowBadge.className = `w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/20 ${STAFF_COLORS[tomorrowIdx].bg}`;
+        tomorrowBadge.textContent = state.names[tomorrowIdx].charAt(0);
+
+        // Find next shift for Person 0 (Alaa)
+        let daysUntilMine = null;
+        for (let i = 0; i <= 14; i++) {
+          const checkKey = toDateKey(addDays(today, i));
+          if (getShiftIndex(checkKey) === 0) {
+            daysUntilMine = i;
+            break;
+          }
+        }
+        const myNextLabel = document.getElementById('myNextShiftLabel');
+        if (daysUntilMine === 0) myNextLabel.textContent = `خفارة ${state.names[0]}: اليوم`;
+        else if (daysUntilMine === 1) myNextLabel.textContent = `خفارة ${state.names[0]}: غداً`;
+        else if (daysUntilMine !== null) myNextLabel.textContent = `خفارة ${state.names[0]}: بعد ${toArabicDigits(daysUntilMine)} أيام`;
+        else myNextLabel.textContent = '';
+
+        // Cycle bar
+        const bar = document.getElementById('cycleSequenceBar');
+        bar.innerHTML = state.names.map((name, i) => {
+          const col = STAFF_COLORS[i];
+          const arrow = i < 3 ? `<span class="text-slate-400 text-xs">←</span>` : '';
+          return `
+            <div class="flex items-center gap-1 flex-1 justify-center">
+              <div class="px-2 py-1.5 rounded-xl text-xs font-bold text-center w-full border ${col.soft} ${col.text} ${col.border}">
+                ${escapeHtml(name)}
+              </div>
+              ${arrow}
+            </div>
+          `;
+        }).join('');
+
+        document.getElementById('anchorInfoText').textContent = `بدءاً من ${state.anchorDate}`;
+      }
+
+      function renderFilterPills() {
+        const container = document.getElementById('filterPills');
+        const allBtnClass = activeFilter === 'all'
+          ? 'bg-emeraldHaidari-800 text-white shadow-sm'
+          : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-ivory-200 dark:border-slate-700 hover:border-goldHaidari-500';
+
+        let html = `<button type="button" data-filter="all" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${allBtnClass}">الكل</button>`;
+        state.names.forEach((name, idx) => {
+          const col = STAFF_COLORS[idx];
+          const isActive = activeFilter === idx;
+          const cls = isActive
+            ? `${col.bg} text-white shadow-sm`
+            : `bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-ivory-200 dark:border-slate-700 hover:border-goldHaidari-500`;
+          html += `<button type="button" data-filter="${idx}" class="px-3 py-1.5 rounded-xl text-xs font-bold transition inline-flex items-center gap-1.5 ${cls}">
+            <span class="w-2 h-2 rounded-full ${isActive ? 'bg-white' : col.bg}"></span>
+            ${escapeHtml(name)}
+          </button>`;
+        });
+        container.innerHTML = html;
+
+        container.querySelectorAll('button[data-filter]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const val = btn.getAttribute('data-filter');
+            activeFilter = val === 'all' ? 'all' : Number(val);
+            renderFilterPills();
+            renderCalendar();
+          });
+        });
+      }
+
+      function renderCalendar() {
+        const firstDay = new Date(viewYear, viewMonth, 1);
+        const lastDay = new Date(viewYear, viewMonth + 1, 0);
+        const daysInMonth = lastDay.getDate();
+
+        // Saturday = 0, Sunday = 1, ..., Friday = 6
+        const startOffset = (firstDay.getDay() + 1) % 7;
+
+        // Titles
+        document.getElementById('calendarGregorianTitle').textContent = `${GREG_MONTHS_AR[viewMonth]} ${toArabicDigits(viewYear)} م`;
+        const hStart = getHijriParts(firstDay);
+        const hEnd = getHijriParts(lastDay);
+        const hijriHeader = hStart.month === hEnd.month
+          ? `${hStart.monthName} ${toArabicDigits(hStart.year)} هـ`
+          : hStart.year === hEnd.year
+            ? `${hStart.monthName} - ${hEnd.monthName} ${toArabicDigits(hEnd.year)} هـ`
+            : `${hStart.monthName} ${toArabicDigits(hStart.year)} - ${hEnd.monthName} ${toArabicDigits(hEnd.year)} هـ`;
+        document.getElementById('calendarHijriTitle').textContent = hijriHeader;
+        document.getElementById('statsMonthBadge').textContent = `${GREG_MONTHS_AR[viewMonth]}`;
+
+        const todayKey = toDateKey(new Date());
+        const tomorrowKey = toDateKey(addDays(new Date(), 1));
+
+        const grid = document.getElementById('calendarGrid');
+        let cellsHtml = '';
+
+        // Leading empty cells
+        for (let i = 0; i < startOffset; i++) {
+          cellsHtml += `<div class="min-h-[82px] sm:min-h-[104px] bg-ivory-50/70 dark:bg-slate-950/50"></div>`;
+        }
+
+        const counts = [0, 0, 0, 0];
+
+        for (let day = 1; day <= daysInMonth; day++) {
+          const d = new Date(viewYear, viewMonth, day);
+          const key = toDateKey(d);
+          const idx = getShiftIndex(key);
+          counts[idx]++;
+          const col = STAFF_COLORS[idx];
+          const hijri = getHijriParts(d);
+          const isToday = key === todayKey;
+          const isTomorrow = key === tomorrowKey;
+          const hasNote = Boolean(state.notes[key] && state.notes[key].trim());
+          const isOverride = Object.prototype.hasOwnProperty.call(state.overrides, key);
+          const isDimmed = activeFilter !== 'all' && activeFilter !== idx;
+
+          const ringClass = isToday
+            ? 'ring-2 ring-inset ring-emeraldHaidari-600 bg-emerald-50/40 dark:bg-emerald-950/25'
+            : isTomorrow
+              ? 'ring-2 ring-inset ring-goldHaidari-500 bg-amber-50/30 dark:bg-amber-950/20'
+              : 'bg-white dark:bg-slate-900';
+
+          const hijriLabel = hijri.day === 1
+            ? `${toArabicDigits(hijri.day)} ${hijri.monthName}`
+            : `${toArabicDigits(hijri.day)}`;
+
+          cellsHtml += `
+            <button type="button" data-date="${key}"
+              class="calendar-cell text-right min-h-[82px] sm:min-h-[104px] p-1.5 sm:p-2.5 flex flex-col justify-between hover:bg-ivory-50 dark:hover:bg-slate-800/80 focus:outline-none ${ringClass} ${isDimmed ? 'opacity-30' : ''}">
+              <div class="flex items-start justify-between gap-1 w-full">
+                <span class="text-sm sm:text-base font-extrabold ${isToday ? 'text-emeraldHaidari-700 dark:text-emerald-400' : 'text-slate-800 dark:text-slate-100'}">
+                  ${toArabicDigits(day)}
+                </span>
+                <span class="text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 rounded-md bg-ivory-100 dark:bg-slate-800 text-goldHaidari-700 dark:text-goldHaidari-400 truncate max-w-[70px]">
+                  ${hijriLabel}
+                </span>
+              </div>
+
+              <div class="flex items-center gap-1 my-1">
+                ${isToday ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-600 text-white">اليوم</span>' : ''}
+                ${isTomorrow ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-goldHaidari-500 text-white">غداً</span>' : ''}
+                ${hasNote ? '<span class="w-1.5 h-1.5 rounded-full bg-rose-500" title="توجد ملاحظة"></span>' : ''}
+                ${isOverride ? '<span class="w-1.5 h-1.5 rounded-full bg-amber-500" title="خفارة مبدّلة"></span>' : ''}
+              </div>
+
+              <div class="w-full px-1.5 py-1 rounded-lg text-[11px] sm:text-xs font-bold text-center truncate border ${col.soft} ${col.text} ${col.border}">
+                ${escapeHtml(state.names[idx])}
+              </div>
+            </button>
+          `;
+        }
+
+        // Trailing empty cells
+        const totalCells = startOffset + daysInMonth;
+        const remainder = totalCells % 7;
+        if (remainder !== 0) {
+          for (let i = 0; i < 7 - remainder; i++) {
+            cellsHtml += `<div class="min-h-[82px] sm:min-h-[104px] bg-ivory-50/70 dark:bg-slate-950/50"></div>`;
+          }
+        }
+
+        grid.innerHTML = cellsHtml;
+        grid.querySelectorAll('button[data-date]').forEach(btn => {
+          btn.addEventListener('click', () => openDayModal(btn.getAttribute('data-date')));
+        });
+
+        renderStats(counts, daysInMonth);
+      }
+
+      function renderStats(counts, totalDays) {
+        const container = document.getElementById('monthlyStatsContainer');
+        container.innerHTML = state.names.map((name, i) => {
+          const col = STAFF_COLORS[i];
+          const count = counts[i];
+          const pct = Math.round((count / totalDays) * 100);
+          return `
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold">
+                <span class="flex items-center gap-2 text-slate-800 dark:text-slate-200">
+                  <span class="w-2.5 h-2.5 rounded-full ${col.bg}"></span>
+                  ${escapeHtml(name)}
+                </span>
+                <span class="text-slate-600 dark:text-slate-400">${toArabicDigits(count)} خفارات (${toArabicDigits(pct)}%)</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-ivory-100 dark:bg-slate-800 overflow-hidden">
+                <div class="h-full rounded-full ${col.bg}" style="width: ${pct}%"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      function renderUpcomingList() {
+        const container = document.getElementById('upcomingList');
+        const today = new Date();
+        let html = '';
+
+        for (let i = 0; i < 12; i++) {
+          const d = addDays(today, i);
+          const key = toDateKey(d);
+          const idx = getShiftIndex(key);
+          const col = STAFF_COLORS[idx];
+          const h = getHijriParts(d);
+          const dayTag = i === 0 ? 'اليوم' : i === 1 ? 'غداً' : WEEKDAYS_AR[d.getDay()];
+          const note = state.notes[key] ? '📝 ' : '';
+
+          html += `
+            <button type="button" data-upcoming-date="${key}"
+              class="text-right p-3 rounded-2xl border border-ivory-200 dark:border-slate-800 bg-ivory-50/50 dark:bg-slate-800/40 hover:border-goldHaidari-500 transition flex items-center justify-between gap-2">
+              <div class="min-w-0">
+                <div class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">
+                  ${note}${dayTag} • ${toArabicDigits(d.getDate())} ${GREG_MONTHS_AR[d.getMonth()].split(' / ')[0]}
+                </div>
+                <div class="text-[11px] font-semibold text-goldHaidari-700 dark:text-goldHaidari-400 truncate">
+                  ${toArabicDigits(h.day)} ${h.monthName} ${toArabicDigits(h.year)} هـ
+                </div>
+              </div>
+              <span class="shrink-0 px-2.5 py-1 rounded-xl text-xs font-bold border ${col.soft} ${col.text} ${col.border}">
+                ${escapeHtml(state.names[idx])}
+              </span>
+            </button>
+          `;
+        }
+
+        container.innerHTML = html;
+        container.querySelectorAll('button[data-upcoming-date]').forEach(btn => {
+          btn.addEventListener('click', () => openDayModal(btn.getAttribute('data-upcoming-date')));
+        });
+      }
+
+      function openDayModal(dateKey) {
+        selectedDateKey = dateKey;
+        const [y, m, d] = dateKey.split('-').map(Number);
+        const dateObj = new Date(y, m - 1, d);
+        const currentIdx = getShiftIndex(dateKey);
+        const isOverride = Object.prototype.hasOwnProperty.call(state.overrides, dateKey);
+
+        document.getElementById('modalWeekday').textContent = WEEKDAYS_AR[dateObj.getDay()];
+        document.getElementById('modalGregorianDate').textContent = formatGregorianFull(dateObj);
+        document.getElementById('modalHijriDate').textContent = formatHijriFull(dateObj);
+        document.getElementById('modalCurrentPerson').textContent = state.names[currentIdx];
+
+        const badge = document.getElementById('modalOverrideBadge');
+        if (isOverride) badge.classList.remove('hidden');
+        else badge.classList.add('hidden');
+
+        const select = document.getElementById('modalAssignSelect');
+        select.innerHTML = state.names.map((name, i) =>
+          `<option value="${i}" ${i === currentIdx ? 'selected' : ''}>${escapeHtml(name)}</option>`
+        ).join('');
+
+        document.getElementById('modalNoteInput').value = state.notes[dateKey] || '';
+
+        const modal = document.getElementById('dayModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+
+      function closeDayModal() {
+        const modal = document.getElementById('dayModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        selectedDateKey = null;
+      }
+
+      function openSettingsModal() {
+        state.names.forEach((name, i) => {
+          document.getElementById(`inputName${i}`).value = name;
+        });
+        document.getElementById('inputAnchorDate').value = state.anchorDate;
+        document.getElementById('inputHijriOffset').value = String(state.hijriOffset || 0);
+
+        const modal = document.getElementById('settingsModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+
+      function closeSettingsModal() {
+        const modal = document.getElementById('settingsModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+
+      function copyToClipboard(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast('تم نسخ جدول الخفارة للمشاركة عبر واتساب');
+          }).catch(() => fallbackCopy(text));
+        } else {
+          fallbackCopy(text);
+        }
+      }
+
+      function fallbackCopy(text) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          showToast('تم نسخ جدول الخفارة للمشاركة عبر واتساب');
+        } catch (e) {
+          showToast('تعذر النسخ التلقائي');
+        }
+        document.body.removeChild(ta);
+      }
+
+      function downloadFile(filename, content, mime) {
+        const blob = new Blob([content], { type: mime });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function renderHijriOffsetBar() {
+        const bar = document.getElementById('hijriQuickOffsetBar');
+        if (!bar) return;
+        const current = Number(state.hijriOffset) || 0;
+        bar.querySelectorAll('button[data-hijri-offset]').forEach(btn => {
+          const val = Number(btn.getAttribute('data-hijri-offset'));
+          if (val === current) {
+            btn.className = 'px-1.5 py-0.5 rounded text-[10px] font-bold transition bg-goldHaidari-600 text-white shadow-sm';
+          } else {
+            btn.className = 'px-1.5 py-0.5 rounded text-[10px] font-bold transition text-slate-600 dark:text-slate-300 hover:bg-ivory-100 dark:hover:bg-slate-700';
+          }
+        });
+      }
+
+      function renderAll() {
+        applyTheme();
+        renderHijriOffsetBar();
+        renderSpotlight();
+        renderFilterPills();
+        renderCalendar();
+        renderUpcomingList();
+      }
+
+      // Event Listeners
+      document.getElementById('btnPrevMonth').addEventListener('click', () => {
+        viewMonth--;
+        if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+        renderCalendar();
+      });
+
+      document.getElementById('btnNextMonth').addEventListener('click', () => {
+        viewMonth++;
+        if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+        renderCalendar();
+      });
+
+      document.getElementById('btnToday').addEventListener('click', () => {
+        const t = new Date();
+        viewYear = t.getFullYear();
+        viewMonth = t.getMonth();
+        renderCalendar();
+      });
+
+      document.getElementById('btnThemeToggle').addEventListener('click', () => {
+        state.theme = state.theme === 'dark' ? 'light' : 'dark';
+        saveState();
+        applyTheme();
+      });
+
+      document.getElementById('btnCloseDayModal').addEventListener('click', closeDayModal);
+      document.getElementById('dayModal').addEventListener('click', (e) => {
+        if (e.target.id === 'dayModal') closeDayModal();
+      });
+
+      document.getElementById('btnSaveDayModal').addEventListener('click', () => {
+        if (!selectedDateKey) return;
+        const chosenIdx = Number(document.getElementById('modalAssignSelect').value);
+        const defaultIdx = getDefaultShiftIndex(selectedDateKey);
+        if (chosenIdx === defaultIdx) {
+          delete state.overrides[selectedDateKey];
+        } else {
+          state.overrides[selectedDateKey] = chosenIdx;
+        }
+        const noteText = document.getElementById('modalNoteInput').value.trim();
+        if (noteText) state.notes[selectedDateKey] = noteText;
+        else delete state.notes[selectedDateKey];
+
+        saveState();
+        closeDayModal();
+        renderAll();
+        showToast('تم حفظ تعديلات اليوم بنجاح');
+      });
+
+      document.getElementById('btnResetDayModal').addEventListener('click', () => {
+        if (!selectedDateKey) return;
+        delete state.overrides[selectedDateKey];
+        delete state.notes[selectedDateKey];
+        saveState();
+        closeDayModal();
+        renderAll();
+        showToast('تمت استعادة الجدول الأصلي لهذا اليوم');
+      });
+
+      document.getElementById('btnOpenSettings').addEventListener('click', openSettingsModal);
+      document.getElementById('btnCloseSettings').addEventListener('click', closeSettingsModal);
+      document.getElementById('settingsModal').addEventListener('click', (e) => {
+        if (e.target.id === 'settingsModal') closeSettingsModal();
+      });
+
+      document.getElementById('btnSaveSettings').addEventListener('click', () => {
+        const newNames = [0, 1, 2, 3].map(i => {
+          const v = document.getElementById(`inputName${i}`).value.trim();
+          return v || DEFAULT_STATE.names[i];
+        });
+        const newAnchor = document.getElementById('inputAnchorDate').value;
+        const newOffset = Number(document.getElementById('inputHijriOffset').value) || 0;
+
+        state.names = newNames;
+        if (/^\d{4}-\d{2}-\d{2}$/.test(newAnchor)) state.anchorDate = newAnchor;
+        state.hijriOffset = newOffset;
+
+        saveState();
+        closeSettingsModal();
+        renderAll();
+        showToast('تم حفظ الإعدادات بنجاح');
+      });
+
+      document.getElementById('btnResetAllDefaults').addEventListener('click', () => {
+        state = structuredCloneSafe(DEFAULT_STATE);
+        saveState();
+        closeSettingsModal();
+        renderAll();
+        showToast('تمت إعادة ضبط التطبيق للوضع الافتراضي');
+      });
+
+      document.getElementById('btnShareWhatsapp').addEventListener('click', () => {
+        const today = new Date();
+        let lines = ['*جدول خفارة الحيدري للزائرين*', ''];
+        for (let i = 0; i < 8; i++) {
+          const d = addDays(today, i);
+          const key = toDateKey(d);
+          const person = state.names[getShiftIndex(key)];
+          const tag = i === 0 ? 'اليوم' : i === 1 ? 'غداً' : WEEKDAYS_AR[d.getDay()];
+          lines.push(`• *${tag}* (${toArabicDigits(d.getDate())}/${toArabicDigits(d.getMonth() + 1)} م | ${formatHijriFull(d)}): *${person}*`);
+        }
+        copyToClipboard(lines.join('\n'));
+      });
+
+      document.getElementById('btnExportCSV').addEventListener('click', () => {
+        const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+        let csv = '\uFEFFالتاريخ الميلادي,اليوم,التاريخ الهجري,الخفير,ملاحظات\n';
+        for (let d = 1; d <= daysInMonth; d++) {
+          const dateObj = new Date(viewYear, viewMonth, d);
+          const key = toDateKey(dateObj);
+          const person = state.names[getShiftIndex(key)];
+          const hijri = formatHijriFull(dateObj);
+          const note = (state.notes[key] || '').replace(/"/g, '""');
+          csv += `"${key}","${WEEKDAYS_AR[dateObj.getDay()]}","${hijri}","${person}","${note}"\n`;
+        }
+        downloadFile(`khafarat-alhaidari-${viewYear}-${viewMonth + 1}.csv`, csv, 'text/csv;charset=utf-8;');
+        showToast('تم تصدير جدول الشهر بصيغة CSV');
+      });
+
+      document.getElementById('btnExportICS').addEventListener('click', () => {
+        const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+        let ics = [
+          'BEGIN:VCALENDAR',
+          'VERSION:2.0',
+          'PRODID:-//Khafarat Al-Haidari//AR',
+          'CALSCALE:GREGORIAN'
+        ];
+        for (let d = 1; d <= daysInMonth; d++) {
+          const dateObj = new Date(viewYear, viewMonth, d);
+          const nextObj = addDays(dateObj, 1);
+          const key = toDateKey(dateObj);
+          const nextKey = toDateKey(nextObj);
+          const person = state.names[getShiftIndex(key)];
+          const dtStart = key.replace(/-/g, '');
+          const dtEnd = nextKey.replace(/-/g, '');
+          ics.push(
+            'BEGIN:VEVENT',
+            `UID:khafara-${dtStart}@alhaidari.local`,
+            `DTSTART;VALUE=DATE:${dtStart}`,
+            `DTEND;VALUE=DATE:${dtEnd}`,
+            `SUMMARY:خفارة الحيدري: ${person}`,
+            `DESCRIPTION:${formatHijriFull(dateObj)}`,
+            'END:VEVENT'
+          );
+        }
+        ics.push('END:VCALENDAR');
+        downloadFile(`khafarat-alhaidari-${viewYear}-${viewMonth + 1}.ics`, ics.join('\r\n'), 'text/calendar;charset=utf-8;');
+        showToast('تم تصدير ملف التقويم (ICS)');
+      });
+
+      document.getElementById('btnDownloadHtml').addEventListener('click', () => {
+        const docHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        downloadFile('khafarat-alhaidari.html', docHtml, 'text/html;charset=utf-8;');
+        showToast('تم تنزيل ملف التطبيق المستقل');
+      });
+
+      let activeTab = 'calendar';
+      let searchedDateKey = toDateKey(new Date());
+
+      function hijriToGregorian(hy, hm, hd) {
+        // Approximate Julian Day from Hijri date
+        const jdApprox = Math.floor((11 * hy + 3) / 30) + 354 * hy + 30 * hm - Math.floor((hm - 1) / 2) + hd + 1948440 - 385;
+        let l = jdApprox + 68569;
+        const n = Math.floor((4 * l) / 146097);
+        l = l - Math.floor((146097 * n + 3) / 4);
+        const i = Math.floor((4000 * (l + 1)) / 1461001);
+        l = l - Math.floor((1461 * i) / 4) + 31;
+        const j = Math.floor((80 * l) / 2447);
+        const gDay = l - Math.floor((2447 * j) / 80);
+        l = Math.floor(j / 11);
+        const gMonth = j + 2 - 12 * l;
+        const gYear = 100 * (n - 49) + i + l;
+
+        const base = new Date(gYear, gMonth - 1, gDay);
+        // Refine against getHijriParts within +-5 days for exact match
+        for (let offset = 0; offset <= 5; offset++) {
+          const candidates = offset === 0 ? [base] : [addDays(base, offset), addDays(base, -offset)];
+          for (const c of candidates) {
+            const h = getHijriParts(c);
+            if (h.year === hy && h.month === hm && h.day === hd) {
+              return { date: c, adjustedDay: false };
+            }
+          }
+        }
+        // If day 30 doesn't exist in a 29-day month, try day 29
+        if (hd === 30) {
+          for (let offset = -5; offset <= 5; offset++) {
+            const c = addDays(base, offset);
+            const h = getHijriParts(c);
+            if (h.year === hy && h.month === hm && h.day === 29) {
+              return { date: c, adjustedDay: true };
+            }
+          }
+        }
+        return { date: base, adjustedDay: false };
+      }
+
+      function populateHijriSearchSelects(dateObj) {
+        const h = getHijriParts(dateObj);
+        const daySel = document.getElementById('searchHijriDay');
+        const monthSel = document.getElementById('searchHijriMonth');
+        const yearSel = document.getElementById('searchHijriYear');
+
+        if (daySel.options.length === 0) {
+          for (let d = 1; d <= 30; d++) {
+            const opt = document.createElement('option');
+            opt.value = String(d);
+            opt.textContent = toArabicDigits(d);
+            daySel.appendChild(opt);
+          }
+        }
+        if (monthSel.options.length === 0) {
+          HIJRI_MONTHS_AR.forEach((mName, idx) => {
+            const opt = document.createElement('option');
+            opt.value = String(idx + 1);
+            opt.textContent = mName;
+            monthSel.appendChild(opt);
+          });
+        }
+        if (yearSel.options.length === 0) {
+          const startY = h.year - 10;
+          const endY = h.year + 15;
+          for (let y = startY; y <= endY; y++) {
+            const opt = document.createElement('option');
+            opt.value = String(y);
+            opt.textContent = `${toArabicDigits(y)} هـ`;
+            yearSel.appendChild(opt);
+          }
+        }
+        daySel.value = String(h.day);
+        monthSel.value = String(h.month);
+        yearSel.value = String(h.year);
+      }
+
+      function switchTab(tab) {
+        activeTab = tab;
+        const calBtn = document.getElementById('tabBtnCalendar');
+        const searchBtn = document.getElementById('tabBtnSearch');
+        const calPanel = document.getElementById('calendarTabPanel');
+        const searchPanel = document.getElementById('searchTabPanel');
+
+        const activeCls = 'flex-1 sm:flex-none px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-emeraldHaidari-800 text-white shadow-sm';
+        const idleCls = 'flex-1 sm:flex-none px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition text-slate-600 dark:text-slate-300 hover:bg-ivory-100 dark:hover:bg-slate-800';
+
+        if (tab === 'calendar') {
+          calBtn.className = activeCls;
+          searchBtn.className = idleCls;
+          calPanel.classList.remove('hidden');
+          searchPanel.classList.add('hidden');
+        } else {
+          searchBtn.className = activeCls;
+          calBtn.className = idleCls;
+          searchPanel.classList.remove('hidden');
+          calPanel.classList.add('hidden');
+          renderSearchResult();
+        }
+      }
+
+      function renderSearchResult() {
+        const [y, m, d] = searchedDateKey.split('-').map(Number);
+        const targetDate = new Date(y, m - 1, d);
+        document.getElementById('searchGregDateInput').value = searchedDateKey;
+        populateHijriSearchSelects(targetDate);
+
+        const idx = getShiftIndex(searchedDateKey);
+        const col = STAFF_COLORS[idx];
+        const isOverride = Object.prototype.hasOwnProperty.call(state.overrides, searchedDateKey);
+        const noteText = state.notes[searchedDateKey] || '';
+
+        let sequenceHtml = '';
+        for (let i = 0; i < 8; i++) {
+          const seqDate = addDays(targetDate, i);
+          const seqKey = toDateKey(seqDate);
+          const seqIdx = getShiftIndex(seqKey);
+          const seqCol = STAFF_COLORS[seqIdx];
+          const seqH = getHijriParts(seqDate);
+          sequenceHtml += `
+            <button type="button" data-search-seq-date="${seqKey}"
+              class="text-right p-3 rounded-2xl border border-ivory-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-goldHaidari-500 transition flex items-center justify-between gap-2">
+              <div class="min-w-0">
+                <div class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">
+                  ${i === 0 ? 'اليوم المحدد' : WEEKDAYS_AR[seqDate.getDay()]} • ${toArabicDigits(seqDate.getDate())} ${GREG_MONTHS_AR[seqDate.getMonth()].split(' / ')[0]} ${toArabicDigits(seqDate.getFullYear())}
+                </div>
+                <div class="text-[11px] font-semibold text-goldHaidari-700 dark:text-goldHaidari-400 truncate">
+                  ${toArabicDigits(seqH.day)} ${seqH.monthName} ${toArabicDigits(seqH.year)} هـ
+                </div>
+              </div>
+              <span class="shrink-0 px-2.5 py-1 rounded-xl text-xs font-bold border ${seqCol.soft} ${seqCol.text} ${seqCol.border}">
+                ${escapeHtml(state.names[seqIdx])}
+              </span>
+            </button>
+          `;
+        }
+
+        const container = document.getElementById('searchResultContainer');
+        container.innerHTML = `
+          <div class="rounded-2xl border-2 ${col.border} ${col.soft} p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-white/80 dark:bg-slate-900/70 text-slate-700 dark:text-slate-200">
+                  ${WEEKDAYS_AR[targetDate.getDay()]}
+                </span>
+                ${isOverride ? '<span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500 text-white">خفارة مبدّلة</span>' : ''}
+              </div>
+              <div class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white pt-1">
+                خفارة: ${escapeHtml(state.names[idx])}
+              </div>
+              <div class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+                ${formatGregorianFull(targetDate)}
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-goldHaidari-700 dark:text-goldHaidari-400">
+                ${formatHijriFull(targetDate)}
+              </div>
+              ${noteText ? `<div class="text-xs text-slate-600 dark:text-slate-300 pt-1">📝 ${escapeHtml(noteText)}</div>` : ''}
+            </div>
+            <div class="flex flex-col sm:items-end gap-2 shrink-0">
+              <button id="btnSearchEditDay" type="button"
+                class="px-4 py-2 rounded-xl bg-emeraldHaidari-800 hover:bg-emeraldHaidari-700 text-white text-xs font-bold shadow transition">
+                تبديل / إضافة ملاحظة
+              </button>
+              <button id="btnSearchJumpCalendar" type="button"
+                class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-ivory-200 dark:border-slate-700 hover:border-goldHaidari-500 text-slate-800 dark:text-slate-200 text-xs font-bold transition">
+                عرض في التقويم الشهري
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-5">
+            <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-200 mb-3">تسلسل الخفارات من هذا اليوم (٨ أيام):</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              ${sequenceHtml}
+            </div>
+          </div>
+        `;
+
+        document.getElementById('btnSearchEditDay').addEventListener('click', () => openDayModal(searchedDateKey));
+        document.getElementById('btnSearchJumpCalendar').addEventListener('click', () => {
+          viewYear = targetDate.getFullYear();
+          viewMonth = targetDate.getMonth();
+          renderCalendar();
+          switchTab('calendar');
+        });
+        container.querySelectorAll('button[data-search-seq-date]').forEach(btn => {
+          btn.addEventListener('click', () => openDayModal(btn.getAttribute('data-search-seq-date')));
+        });
+      }
+
+      document.getElementById('tabBtnCalendar').addEventListener('click', () => switchTab('calendar'));
+      document.getElementById('tabBtnSearch').addEventListener('click', () => switchTab('search'));
+
+      document.getElementById('btnSearchGreg').addEventListener('click', () => {
+        const val = document.getElementById('searchGregDateInput').value;
+        if (/^\d{4}-\d{2}-\d{2}$/.test(val)) {
+          searchedDateKey = val;
+          renderSearchResult();
+        }
+      });
+      document.getElementById('searchGregDateInput').addEventListener('change', (e) => {
+        const val = e.target.value;
+        if (/^\d{4}-\d{2}-\d{2}$/.test(val)) {
+          searchedDateKey = val;
+          renderSearchResult();
+        }
+      });
+
+      document.getElementById('btnSearchHijri').addEventListener('click', () => {
+        const hd = Number(document.getElementById('searchHijriDay').value);
+        const hm = Number(document.getElementById('searchHijriMonth').value);
+        const hy = Number(document.getElementById('searchHijriYear').value);
+        const res = hijriToGregorian(hy, hm, hd);
+        searchedDateKey = toDateKey(res.date);
+        renderSearchResult();
+        if (res.adjustedDay) {
+          showToast('هذا الشهر الهجري ٢٩ يوماً، تم عرض اليوم ٢٩');
+        }
+      });
+
+      const _origRenderAll = renderAll;
+      renderAll = function () {
+        _origRenderAll();
+        if (activeTab === 'search') renderSearchResult();
+      };
+
+      document.querySelectorAll('#hijriQuickOffsetBar button[data-hijri-offset]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const val = Number(btn.getAttribute('data-hijri-offset'));
+          state.hijriOffset = val;
+          saveState();
+          renderAll();
+          const label = val === 0 ? 'الوضع القياسي (٠)' : val > 0 ? `تقديم +${toArabicDigits(val)} يوم` : `تأخير ${toArabicDigits(val)} يوم`;
+          showToast(`تم ضبط التاريخ الهجري: ${label}`);
+        });
+      });
+
+      // Initialize
+      renderAll();
+    })();
+  </script>
+
+<!-- APK-STUDIO-WEBVIEW-BRIDGE -->
+<script>
+  (function() {
+    // Ensure external WhatsApp & tel links open cleanly in Android WebView
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest ? e.target.closest('a') : null;
+      if (!a || !a.href) return;
+      if (/^(https?:\/\/(wa\.me|api\.whatsapp\.com)|whatsapp:\/\/|tel:|mailto:)/i.test(a.href)) {
+        a.target = '_blank';
+      }
+    }, true);
+  })();
+</script>
+</body>
+</html>
