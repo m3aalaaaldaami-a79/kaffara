@@ -1,17 +1,21 @@
-name: Build Android APK
+name: Build APK
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -19,20 +23,32 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Prepare Web & Capacitor Android Project
+        run: |
+          mkdir -p www
+          cp index.html www/index.html
+          npm init -y
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
+          npx cap init "خفارة الحيدري" "com.alhaidari.khafara" --web-dir www
+          npx cap add android
+
       - name: Replace App Icon
         run: |
-          rm -rf app/src/main/res/mipmap-anydpi-v26
-          rm -rf android/app/src/main/res/mipmap-anydpi-v26
-          find . -name "ic_launcher*.png" -exec cp icon.png {} \;
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+          if [ -f "icon.png" ]; then
+            for dir in android/app/src/main/res/mipmap-*; do
+              cp icon.png "$dir/ic_launcher.png"
+              cp icon.png "$dir/ic_launcher_round.png"
+            done
+          fi
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: khafarat-alhaidari-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
